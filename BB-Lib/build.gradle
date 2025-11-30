@@ -1,0 +1,59 @@
+plugins {
+    alias(libs.plugins.android.library)
+    id "maven-publish"
+}
+
+android {
+    namespace 'org.bluebananas.lib.BBLib'
+    compileSdk {
+        version = release(36)
+    }
+
+    defaultConfig {
+        minSdk 28
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+publishing {
+    publications {
+        BBLib(MavenPublication) {
+            groupId = 'org.bluebananas.lib'
+            artifactId = 'bb-lib'
+            version = '0.1.0'
+
+            artifact "$buildDir/outputs/aar/BB-Lib-release.aar"
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/FTC-24180/BB-Lib")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
