@@ -10,7 +10,7 @@ android {
     }
 
     defaultConfig {
-        minSdk 28
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,7 +33,7 @@ publishing {
         BBLib(MavenPublication) {
             groupId = 'org.bluebananas.lib'
             artifactId = 'bb-lib'
-            version = '0.1.0'
+            version = '0.1.1'
 
             artifact "$buildDir/outputs/aar/BB-Lib-release.aar"
         }
