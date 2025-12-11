@@ -28,7 +28,7 @@ jobs:
 
       - name: Verify new version
         run: |
-          if echo "${{ steps.package-versions.outputs.versions }}" | grep -q "\"name\": \"${{ steps.publish-version.outputs.version }}\"")" > /dev/null; then
+          if echo "${{ steps.package-versions.outputs.versions }}" | grep -q "\"name\": \"${{ steps.publish-version.outputs.version }}\"" > /dev/null; then
             echo "Version ${{ steps.publish-version.outputs.version }} already exists"
             exit 1
           fi 
