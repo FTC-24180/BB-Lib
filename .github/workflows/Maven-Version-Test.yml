@@ -1,0 +1,34 @@
+name: Maven Version Test
+
+on:
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        
+      - name: Get publish version
+        id: publish-version
+        run: |
+          VERSION=$(grep "^\s*version\s*=" BB-Lib/build.gradle | sed "s/version[[:space:]]*=[[:space:]]*[\"']\(.*\)[\"']/\1/")
+          echo version=$VERSION >> $GITHUB_OUTPUT
+
+      - name: Get package versions
+        id: package-versions
+        run: |
+          VERSIONS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                            -H "Accept: application/vnd.github.v3+json" \
+                            "https://api.github.com/orgs/FTC-24180/packages/maven/org.bluebananas.lib.bb-lib/versions")
+          echo versions=$VERSIONS >> $GITHUB_OUTPUT
+
+      - name: Verify new version
+        run: |
+          if echo "${{ steps.package-versions.outputs.versions }}" | jq -e ".[] | select(.name==\"${{ steps.publish-version.outputs.version }}\")" > /dev/null; then
+            echo "Version ${{ steps.publish-version.outputs.version }} already exists"
+            exit 1
+          fi 
