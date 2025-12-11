@@ -24,12 +24,11 @@ jobs:
           VERSIONS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                             -H "Accept: application/vnd.github.v3+json" \
                             "https://api.github.com/orgs/FTC-24180/packages/maven/org.bluebananas.lib.bb-lib/versions")
-          VERSIONS_B64=$(echo "$VERSIONS" | base64)
-          echo versions=$VERSIONS_B64 >> $GITHUB_OUTPUT
+          echo versions=$VERSIONS >> $GITHUB_OUTPUT
 
       - name: Verify new version
         run: |
-          if echo "${{ steps.package-versions.outputs.versions }}" | base64 --decode | jq -e ".[] | select(.name==\"${{ steps.publish-version.outputs.version }}\")" > /dev/null; then
+          if echo "${{ steps.package-versions.outputs.versions }}" | grep -q "\"name\": \"${{ steps.publish-version.outputs.version }}\"")" > /dev/null; then
             echo "Version ${{ steps.publish-version.outputs.version }} already exists"
             exit 1
           fi 
