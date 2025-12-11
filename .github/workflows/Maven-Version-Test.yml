@@ -24,7 +24,9 @@ jobs:
           VERSIONS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                             -H "Accept: application/vnd.github.v3+json" \
                             "https://api.github.com/orgs/FTC-24180/packages/maven/org.bluebananas.lib.bb-lib/versions")
-          echo versions=$VERSIONS >> $GITHUB_OUTPUT
+          echo "versions<<EOF" >> $GITHUB_OUTPUT
+          echo "$VERSIONS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Verify new version
         run: |
