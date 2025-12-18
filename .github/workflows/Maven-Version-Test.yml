@@ -34,5 +34,9 @@ jobs:
           if echo "${{ steps.package-versions.outputs.versions }}" | grep -q "\"name\": \"${{ steps.publish-version.outputs.version }}\""; then
             echo "Version ${{ steps.publish-version.outputs.version }} already exists"
             exit 1
-          fi 
-          exit 1
+          fi
+      - name: test
+        run: |
+          if echo "test" | grep -q "t"; then
+            echo "why"
+          fi
