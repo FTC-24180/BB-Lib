@@ -15,7 +15,7 @@ jobs:
       - name: Get publish version
         id: publish-version
         run: |
-          VERSION=$(grep "^\s*version\s*=" BB-Lib/build.gradle | sed "s/version[[:space:]]*=[[:space:]]*[\"']\(.*\)[\"']/\1/")
+          VERSION=$(sed -n "/BBLib(MavenPublication)[[:space:]]*{/, /}/p" BB-Lib/build.gradle | sed "s/version[[:space:]]*=[[:space:]]*[\"']\(.*\)[\"']/\1/")
           echo version=$VERSION >> $GITHUB_OUTPUT
           echo $VERSION
 
