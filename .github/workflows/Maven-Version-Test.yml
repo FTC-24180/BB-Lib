@@ -37,6 +37,6 @@ jobs:
           fi
       - name: test
         run: |
-          if echo "test" | grep -q "t"; then
+          if echo "test"foo"" | grep -q "foo"; then
             echo "why"
           fi
