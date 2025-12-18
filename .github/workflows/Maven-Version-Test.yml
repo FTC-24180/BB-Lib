@@ -17,6 +17,7 @@ jobs:
         run: |
           VERSION=$(grep "^\s*version\s*=" BB-Lib/build.gradle | sed "s/version[[:space:]]*=[[:space:]]*[\"']\(.*\)[\"']/\1/")
           echo version=$VERSION >> $GITHUB_OUTPUT
+          echo $VERSION
 
       - name: Get package versions
         id: package-versions
@@ -25,6 +26,7 @@ jobs:
                             -H "Accept: application/vnd.github.v3+json" \
                             "https://api.github.com/orgs/FTC-24180/packages/maven/org.bluebananas.lib.bb-lib/versions")
           echo versions=$VERSIONS >> $GITHUB_OUTPUT
+          echo $VERSIONS
 
       - name: Verify new version
         run: |
