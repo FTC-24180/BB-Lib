@@ -1,21 +1,38 @@
 package org.bluebananas.lib.BBLib.Hardware.Motors;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 /** Provides power control for motors. */
 public class SimpleMotor {
     // Config
-    DcMotorSimple motorReference; // Stores the reference to the physical motor component
+    DcMotor motorReference; // Stores the reference to the physical motor component
 
     // Properties
     double pow;
+    double pos;
+    double vel;
+    double accel;
 
     // Property Getters
     public double getPow() {
         return pow;
     }
+    public double getPos() {
+        return pos;
+    }
+    public double getVel() {
+        return vel;
+    }
+    public double getAccel() {
+        return accel;
+    }
 
+    // Other vars
+    ElapsedTime timer = new ElapsedTime();
+    double previousPos = 0;
+    double previousVel = 0;
 
 
     // Constructors
@@ -24,7 +41,7 @@ public class SimpleMotor {
      * @param opMode The running OpMode.
      */
     public SimpleMotor(String name, OpMode opMode) {
-        motorReference = opMode.hardwareMap.get(DcMotorSimple.class, name);
+        motorReference = opMode.hardwareMap.get(DcMotor.class, name);
     }
 
     // Functions
@@ -37,5 +54,12 @@ public class SimpleMotor {
     /** Updates the state of the motor. Must be called every loop for the motor to run properly. */
     public void update() {
         motorReference.setPower(pow);
+
+        pos = motorReference.getCurrentPosition();
+        vel = (pos - previousPos) / timer.seconds();
+        accel = (vel - previousVel) / timer.seconds();
+
+        previousPos = pos;
+        previousVel = vel;
     }
 }
