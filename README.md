@@ -26,9 +26,7 @@ repositories {
 
     maven {
 
-        name = "GitHubPackages"
-
-        url = "https://maven.pkg.github.com/FTC-24180/BB-Lib"
+        url = "https://jitpack.io"
 
     }
 
@@ -40,7 +38,7 @@ In the `dependencies` block add:
 
 ```gradle
 
-implementation "org.bluebananas.lib:bb-lib:NEWEST_VERSION"
+implementation "com.github.FTC-24180:BB-Lib:NEWEST_VERSION"
 
 ```
 
@@ -68,9 +66,7 @@ repositories {
 
     maven {
 
-        name = "GitHubPackages"
-
-        url = "https://maven.pkg.github.com/FTC-24180/BB-Lib"
+        url = "https://jitpack.io"
 
     }
 
@@ -80,7 +76,7 @@ dependencies {
 
     implementation project(':FtcRobotController')
 
-    implementation "org.bluebananas.lib:bb-lib:NEWEST_VERSION"
+    implementation "com.github.FTC-24180:BB-Lib:NEWEST_VERSION"
 
 }
 
