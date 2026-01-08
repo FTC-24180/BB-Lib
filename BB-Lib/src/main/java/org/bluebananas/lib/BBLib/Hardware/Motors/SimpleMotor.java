@@ -3,7 +3,7 @@ package org.bluebananas.lib.BBLib.Hardware.Motors;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-/** Provides basic control of a standard servo. */
+/** Provides power control for motors. */
 public class SimpleMotor {
     // Config
     DcMotorSimple motorReference; // Stores the reference to the physical motor component
@@ -34,7 +34,7 @@ public class SimpleMotor {
     public void setPower(double pow) {
         this.pow = pow;
     }
-    /** Updates the state of the servo. Must be called every loop for the servo to run properly. */
+    /** Updates the state of the motor. Must be called every loop for the motor to run properly. */
     public void update() {
         motorReference.setPower(pow);
     }
