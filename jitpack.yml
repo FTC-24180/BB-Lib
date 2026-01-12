@@ -1,2 +1,11 @@
 jdk:
-  - openjdk8
+  - openjdk-8
+
+install:
+  - yes | sdkmanager --licenses
+  - yes | sdkmanager "platforms;android-33" "build-tools;33.0.2"
+
+script:
+  - ./gradlew clean
+
+  - ./gradlew :BB-Lib:assembleRelease
