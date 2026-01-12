@@ -9,3 +9,6 @@ script:
   - ./gradlew clean
 
   - ./gradlew :BB-Lib:assembleRelease
+  
+  - mkdir -p $HOME/.m2/repository/com/github/FTC-24180/BB-Lib/0.1.3
+  - cp BB-Lib/build/outputs/aar/BB-Lib-release.aar $HOME/.m2/repository/com/github/FTC-24180/BB-Lib/0.1.3/BB-Lib-0.1.3.aar
