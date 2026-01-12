@@ -27,6 +27,12 @@ android {
     }
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
 dependencies {
     implementation libs.appcompat
     implementation libs.material
