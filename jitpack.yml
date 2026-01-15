@@ -2,5 +2,5 @@ jdk:
   - openjdk-17
 
 script:
-  - ./gradlew build
+  - ./gradlew assembleRelease
   - ./gradlew publishToMavenLocal
