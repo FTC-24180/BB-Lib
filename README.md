@@ -1,3 +1,4 @@
+# Deprecated - DO NOT USE
 ## Overview 
 
 BB-Lib is a Java Android library designed for coding FTC robots. It includes several features to make coding robots easier, such as enhanced hardware classes, advanced controllers, and other utility classes.
