@@ -8,12 +8,13 @@ This may change in the future but for now if you are not a member of FTC-24180 p
 ## Contributing
 If you are a member of FTC-24180 then there are a few guidelines you need to know before contributing.
 ### Branch Rules
-1. The `release` branch is protected and can only be pushed to via pull request. 
-When code is pushed to `release` a new package version is automaticly published so only ready to release code should be pushed to `release`.
-Before pushing to `release` you must change the publish version number in BB-Lib/build.graddle.
-3. Feature branches should branch off from, and return to `dev`, which can be done without pull requests.
-4. When creating feature branches, they should be named in the following format: `username-feature` where username is your username and feature is the feature you are working on.
-5. When finished with your feature branch, merge it into `dev` and delete it from remote. Make sure the feature branch is in sync with `dev` before deleting it.
+1. `master` is the only long-lived branch. There is no `release`/`dev` split.
+2. A new package version is published by pushing a Git tag (e.g. `git tag 0.3.0 && git push origin 0.3.0`),
+not by pushing to a protected branch. JitPack builds it lazily the first time someone resolves that tag.
+There is no version number to edit in `BB-Lib/build.gradle` - it reads the version from the tag itself.
+See [CLAUDE.md](CLAUDE.md) for the full release process.
+3. When creating feature branches, they should be named in the following format: `username-feature` where username is your username and feature is the feature you are working on.
+4. When finished with your feature branch, merge it into `master` and delete it from remote. Make sure the feature branch is in sync with `master` before deleting it.
 ### Naming Conventions
 We use standard Java naming conventions. This document will provide an overveiw for those unfamiliar with them.
 - Variables should be in camel case ex:`fooBar`

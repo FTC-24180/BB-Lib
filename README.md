@@ -60,3 +60,10 @@ first time someone requests that version. There is no separate publish step to r
 ## Resources
 
 More information about the library can be found in the [wiki](https://github.com/FTC-24180/BB-Lib/wiki).
+
+See [CLAUDE.md](CLAUDE.md) for architecture and the dependency rules for FTC SDK types,
+and [CONTRIBUTING.md](CONTRIBUTING.md) for branch rules and naming conventions.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
