@@ -11,7 +11,7 @@ version = System.getenv('VERSION') ?: 'local'
 android {
     namespace 'org.bluebananas.lib.BBLib'
     compileSdk {
-        version = release(37)
+        version = release(36)
     }
 
     defaultConfig {
