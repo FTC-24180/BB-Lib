@@ -1,22 +1,25 @@
 ## Who can contribute?
 At the moment only our organazation members can contribute to BB-Lib, however, you are still welcome to use and fork this repository. 
-This may change in the future but for now if you are not a member of FTC-24180 please adhere to the following:
-- Do not ask to be a contributer for BB-Lib.
-- Do not submit pull requests to BB-Lib.
-- Do not open issues in BB-Lib.
 
 ## Contributing
 If you are a member of FTC-24180 then there are a few guidelines you need to know before contributing.
-### Branch Rules
-1. `master` is the only long-lived branch. There is no `release`/`dev` split.
-2. A new package version is published by pushing a Git tag (e.g. `git tag 0.3.0 && git push origin 0.3.0`),
-not by pushing to a protected branch. JitPack builds it lazily the first time someone resolves that tag.
-There is no version number to edit in `BB-Lib/build.gradle` - it reads the version from the tag itself.
-See [CLAUDE.md](CLAUDE.md) for the full release process.
-3. When creating feature branches, they should be named in the following format: `username-feature` where username is your username and feature is the feature you are working on.
-4. When finished with your feature branch, merge it into `master` and delete it from remote. Make sure the feature branch is in sync with `master` before deleting it.
+### Branch Information
+- `master` is the only long lived branch and is pull request protected. Changes must always start in a feature branch.
+-  When creating feature branches, they should be named in the following format: `username-feature` where username is your username and feature is the feature you are working on.
+- Once the feature is done create a pull request.
+- If you are confident in your code you may merge your pull request without review. Only completed work up to date with master should be merged.
+- After merging a feature branch delete it from remote. Make sure the feature branch is in sync with `master` before deleting it.
+### Publishing a Version
+- To publish a version to Jitpack create a release containing a commit on the master branch and tag it with the apropriate version number.
+### Version Numbering
+- **NEVER REUSE VERSION NUMBERS**
+- Version numbers use a three number format that incriments up by one based on the following criteria:
+  - First number indecates breaking change
+  - Secound number indecates added feature
+  - Third number indecates bug fix
+- Ex: `1.3.23` = Breaking change 1, feature release 3, bugfix 23.
 ### Naming Conventions
-We use standard Java naming conventions. This document will provide an overveiw for those unfamiliar with them.
+We use standard Java naming conventions. This document will provide an overveiw for those unfamiliar with them. 
 - Variables should be in camel case ex:`fooBar`
   - `boolean` should be a true or false statement ex:`isRobotMoving`
   - `int`/`double`/`string` should be a noun ex:`robotAngle` or `robotName`
