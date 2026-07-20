@@ -11,7 +11,7 @@ version = System.getenv('VERSION') ?: 'local'
 android {
     namespace 'org.bluebananas.lib.BBLib'
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
@@ -39,10 +39,7 @@ android {
 
     lint {
         // FTC SDK artifacts ship prebuilt native libraries that predate 16 KB page-size
-        // alignment. None of this library's compileOnly FTC SDK deps are ever packaged
-        // into BB-Lib's own AAR (see "why compileOnly" below), and TeamCode is
-        // side-loaded onto a Control/Driver Hub, never submitted to Play Store, so the
-        // check doesn't apply to this project's deployment path.
+        // alignment.
         disable 'Aligned16KB'
     }
 
@@ -52,16 +49,6 @@ android {
 }
 
 dependencies {
-    // FTC SDK types are needed to compile against (DcMotor, Servo, OpMode,
-    // ElapsedTime, ...), but must stay compileOnly: FTCRobotController itself
-    // provides these classes at runtime, and pulling them in as `implementation`
-    // bundles a second, version-pinned copy into every consumer's app. That version
-    // skew is what previously caused the Control Hub to crash-loop before reaching
-    // any op mode code - the hub never finished booting, and the only trace was in
-    // the system log, not the team's own debug output. Only RobotCore is declared
-    // here because that's the only module any class in this library actually
-    // references - Blocks/Inspection/OnBotJava/Hardware/FtcCommon/Vision were
-    // previously declared speculatively without any class needing their types.
     compileOnly libs.robotcore
 
     testImplementation libs.junit
@@ -76,8 +63,6 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 groupId = project.group
-                // Keep the existing 'BB-Lib' coordinate stable - BioBuzz and
-                // State-Bot already reference com.github.FTC-24180:BB-Lib:<tag>.
                 artifactId = 'BB-Lib'
                 version = project.version
             }
