@@ -17,7 +17,7 @@ If you are a member of FTC-24180 then there are a few guidelines you need to kno
   - First number indicates breaking change
   - Second number indicates added feature
   - Third number indicates bug fix
-- Ex: `1.3.23` = Breaking change 1, feature release 3, bugfix 23.
+- Ex: `1.3.23` = Breaking change 1, feature release 3, bug fix 23.
 ### Naming Conventions
 We use standard Java naming conventions. This document will provide an overveiw for those unfamiliar with them. 
 - Variables should be in camel case ex:`fooBar`
@@ -27,8 +27,14 @@ We use standard Java naming conventions. This document will provide an overveiw 
 - Functions should be verbs in camel case ex:`moveArm`
 - Classes should be nouns in pascal case ex:`RobotArm`
 - Files should be named in the same way as classes
-- Special cases
+- Special cases:
   - When there is a private member of a class that is set by a property in the class's constructor, instead of giving them different names use the `this.` syntax to set the private member in the constructor.
+### Comments
+- All classes, functions, and variables exposed to the consuming projects should have java doc comments that specify their functionality, usage, returns, and parameters.
+- Use inline and block comments to denote file organization and specify unclear or important information for other contributors.
+### Unit Tests
+- Implement unit tests for all exposed functionality unless it is overly simple.
+- Any number inputs (int or double) should test for 0.
 ### Common Abbreviations
 This is a list of common abbreviations used in the code base.
 - pos = position
