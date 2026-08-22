@@ -49,10 +49,13 @@ android {
 }
 
 dependencies {
+    // Compile dependencies
     compileOnly libs.robotcore
 
+    // Test dependencies
+    testImplementation libs.robotcore
     testImplementation libs.junit
-    testCompileOnly libs.robotcore
+    testImplementation libs.mockito
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 }
