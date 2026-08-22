@@ -11,6 +11,7 @@ version = System.getenv('VERSION') ?: 'local'
 android {
     namespace 'org.bluebananas.lib.BBLib'
     compileSdk {
+        //noinspection GradleDependency | Updating past compileSDK 36 will prevent jitpack from building
         version = release(36)
     }
 
@@ -50,7 +51,7 @@ android {
 
 dependencies {
     // Compile dependencies
-    compileOnly libs.robotcore
+    compileOnly libs.robotcore // Must stay compileOnly, if changed consuming software will silently hang on robot upload
 
     // Test dependencies
     testImplementation libs.robotcore
