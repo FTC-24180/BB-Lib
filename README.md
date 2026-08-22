@@ -6,8 +6,9 @@ BB-Lib is a Java Android library designed for coding FTC robots. It includes sev
 
 ## Features
 
-- Enhanced telemetry with filterering and sorting.
+- Enhanced telemetry with filtering and sorting.
 - Configurable feedback controllers.
+- Utility classes such as Vector2 and Pose2.
 
 ## Using the Library
 
@@ -47,4 +48,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contributing information.
 
 ## License
 
-Avalible under MIT license, see [LICENSE](LICENSE) for more information.
+Available under MIT license, see [LICENSE](LICENSE) for more information.
