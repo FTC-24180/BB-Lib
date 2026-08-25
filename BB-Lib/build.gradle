@@ -11,8 +11,10 @@ version = System.getenv('VERSION') ?: 'local'
 android {
     namespace 'org.bluebananas.lib.BBLib'
     compileSdk {
-        //noinspection GradleDependency | Updating past compileSDK 36 will prevent jitpack from building
-        version = release(36)
+        //Updating past compileSDK 36 will prevent jitpack from building.
+        //Updating past compileSDK 30 breaks default compatibility with FTC SDK.
+        //noinspection GradleDependency
+        version = release(30)
     }
 
     defaultConfig {
