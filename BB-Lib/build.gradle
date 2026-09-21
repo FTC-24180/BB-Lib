@@ -48,6 +48,7 @@ android {
 
     publishing {
         singleVariant('release') {
+            withSourcesJar()
             withJavadocJar()
         }
     }
@@ -69,10 +70,11 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.release
                 groupId = project.group
                 artifactId = 'BB-Lib'
                 version = project.version
+
+                from components.release
             }
         }
     }
