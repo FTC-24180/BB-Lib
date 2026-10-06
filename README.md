@@ -44,8 +44,8 @@ dependencies {
 
 More information about the library can be found in the [wiki](https://github.com/FTC-24180/BB-Lib/wiki).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contributing information.
+See [CONTRIBUTING.md](https://github.com/FTC-24180/BB-Lib?tab=contributing-ov-file) for contributing information.
 
 ## License
 
-Available under MIT license, see [LICENSE](LICENSE) for more information.
+Available under MIT license, see [LICENSE](https://github.com/FTC-24180/BB-Lib?tab=MIT-1-ov-file) for more information.
