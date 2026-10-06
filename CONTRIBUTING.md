@@ -18,8 +18,11 @@ If you are a member of FTC-24180 then there are a few guidelines you need to kno
   - Second number indicates added feature
   - Third number indicates bug fix
 - Ex: `1.3.23` = Breaking change 1, feature release 3, bug fix 23.
+- Before fully releasing a version, at least one prerelease should be made to ensure there are no major issues.
+  - Append `pre` and the prerelease number to the version number too create a prerelease.
+  - Ex: `1.3.23pre1` = First pre release for version 1.3.23
 ### Naming Conventions
-We use standard Java naming conventions. This document will provide an overveiw for those unfamiliar with them. 
+We use standard Java naming conventions. This document will provide an overview for those unfamiliar with them. 
 - Variables should be in camel case ex:`fooBar`
   - `boolean` should be a true or false statement ex:`isRobotMoving`
   - `int`/`double`/`string` should be a noun ex:`robotAngle` or `robotName`
